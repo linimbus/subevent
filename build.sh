@@ -1,7 +1,4 @@
 #!/bin/bash
 
-rm -f tests
+rm -rf build && mkdir build && cd build && cmake -DCODE_COVERAGE=ON .. && cmake --build . --config Debug --target coverage
 
-g++ -std=c++17 -g test_SingleEvent.cpp test_MultiEvent.cpp -lgtest -lgtest_main -pthread -o tests
-
-./tests
