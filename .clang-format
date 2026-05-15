@@ -1,0 +1,55 @@
+# 基于 Google 风格，兼容 Clang >= 15
+BasedOnStyle: Google
+
+# 缩进设置
+IndentWidth: 4                # 缩进宽度为 4 个空格
+TabWidth: 4                   # 制表符按 4 个空格显示
+UseTab: Never                 # 禁止使用制表符，全部使用空格
+ContinuationIndentWidth: 4    # 续行缩进宽度
+
+# 指针与引用， '*'和'&'紧贴变量类型
+PointerAlignment: Left
+
+# 控制流语句（switch-case）相关的设置
+IndentCaseLabels: true        # case 标签相对于 switch 缩进
+AllowShortCaseLabelsOnASingleLine: false  # 禁止短case标签与内容同行
+BreakBeforeBraces: Attach     # 大括号不换行，如 'function() {'
+IndentWrappedFunctionNames: false  # 不缩进换行的函数名
+
+# 参数打包行为
+BinPackParameters: false      # 禁止自动打包参数，适合多行参数列表
+BinPackArguments: true        # 允许自动打包函数实参（保持紧凑）
+
+# 注释与对齐
+AlignTrailingComments: false  # 不对齐尾随注释
+AlignConsecutiveAssignments: false  # 不对齐连续赋值语句的等号
+AlignAfterOpenBracket: Align  # 括号后内容对齐
+
+# 行宽与空格
+ColumnLimit: 120              # 最大列宽120字符
+MaxEmptyLinesToKeep: 2        # 最多保留2个连续空行
+SpaceAfterCStyleCast: false   # C风格转型后不加空格
+
+# 函数与块的重排行为
+AllowShortFunctionsOnASingleLine: false   # 允许空函数体放在同一行
+AllowShortBlocksOnASingleLine: false     # 尽量将短块放在同一行
+
+# Include 排序
+SortIncludes: false           # 关闭自动排序，保留手动管理的顺序
+
+# 命名空间
+CompactNamespaces: true       # 连续的空命名空间声明合并为一行
+FixNamespaceComments: true    # 在命名空间结束处自动添加注释
+
+# 预处理器指令缩进
+IndentPPDirectives: BeforeHash  # 在 '#' 符号前缩进预处理器指令
+
+# 转义换行符对齐
+AlignEscapedNewlines: Left
+
+# 特殊宏处理（可选）
+# MacroBlockBegin: "^BEGIN"
+# MacroBlockEnd: "^END"
+
+# 语言指定（可选）
+Language: Cpp
