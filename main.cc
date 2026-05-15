@@ -1,4 +1,4 @@
-#include "event.h"
+#include "MultiEvent.h"
 
 struct MsgEvent {
     int id;
@@ -26,11 +26,11 @@ bool operator==(const MsgEvent3 &lhs, const MsgEvent3 &rhs) {
 }
 
 int main() {
-    EventFramework bus;
+    MultiEvent bus;
 
-    bus.Subscribe<MsgEvent>([](const MsgEvent &e) { std::cout << "[Single] Got: " << e.data << "\n"; });
+    bus.Subscribe<MsgEvent>(MsgEvent{101, "Hello"}, [](const MsgEvent &e) { std::cout << "[Single] Got: " << e.data << "\n"; });
 
-    bus.Subscribe<MsgEvent2>([](const MsgEvent2 &e) { std::cout << "[Single] Got value: " << e.value << "\n"; });
+    bus.Subscribe<MsgEvent2>(MsgEvent2{3.14}, [](const MsgEvent2 &e) { std::cout << "[Single] Got value: " << e.value << "\n"; });
 
     bus.Subscribe<MsgEvent>(MsgEvent{101, "Hello"}, [](const MsgEvent &e) {
         std::cout << "[Single] Got id: " << e.id << ", data: " << e.data << "\n";
