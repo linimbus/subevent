@@ -43,7 +43,7 @@ add_executable(subevent_tests test_SingleEvent.cpp test_MultiEvent.cpp)
 
 target_include_directories(subevent_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(subevent_tests PRIVATE GTest::gtest_main)
+target_link_libraries(subevent_tests PRIVATE GTest::gtest_main pthread)
 
 target_compile_options(subevent_tests PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:-Wall;-Wextra;-Wpedantic>
@@ -52,6 +52,21 @@ target_compile_options(subevent_tests PRIVATE
 
 include(GoogleTest)
 gtest_discover_tests(subevent_tests)
+
+# Concurrent tests
+add_executable(subevent_concurrent_tests test_SingleEvent_Concurrent.cpp test_MultiEvent_Concurrent.cpp)
+
+target_include_directories(subevent_concurrent_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(subevent_concurrent_tests PRIVATE GTest::gtest_main pthread)
+
+target_compile_options(subevent_concurrent_tests PRIVATE
+    $<$<CXX_COMPILER_ID:GNU>:-Wall;-Wextra;-Wpedantic>
+    $<$<CXX_COMPILER_ID:Clang>:-Wall;-Wextra;-Wpedantic>
+)
+
+include(GoogleTest)
+gtest_discover_tests(subevent_concurrent_tests)
 
 find_program(LCOV_EXEC lcov)
 find_program(GENHTML_EXEC genhtml)
